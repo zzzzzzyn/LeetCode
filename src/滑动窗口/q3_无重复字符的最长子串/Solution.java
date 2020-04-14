@@ -1,5 +1,6 @@
-package 指针.q3_无重复字符的最长子串;
+package 滑动窗口.q3_无重复字符的最长子串;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +31,7 @@ public class Solution {
     }
 
     /**
-     * 双指针法
+     * 滑动窗口
      */
     public int lengthOfLongestSubstring2(String s) {
         char[] array = s.toCharArray();
@@ -54,9 +55,28 @@ public class Solution {
             }
             end++;
             length++;
-            result  = Math.max(length, result);
+            result = Math.max(length, result);
         }
         return result;
+    }
+
+    /**
+     * 滑动窗口2
+     */
+    public int lengthOfLongestSubstring3(String s) {
+        int max = 0;
+        int left = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                // 替换窗口最左侧的值，相当于最左侧出栈
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            // 计算窗口中的值
+            max = Math.max(max, i - left + 1);
+        }
+        return max;
     }
 
 }
