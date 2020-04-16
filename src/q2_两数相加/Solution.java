@@ -1,4 +1,4 @@
-package 链表.q2_两数相加;
+package q2_两数相加;
 
 /**
  * Created by xyn on 2020/2/24
