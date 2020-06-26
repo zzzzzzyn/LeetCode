@@ -22,7 +22,7 @@ public class BFS {
             int[] x = queue.poll();
             int i = x[0], j = x[1], si = x[2], sj = x[3];
             if (i >= m || j >= n || k < si + sj || visited[i][j]) continue;
-            visited[i][j]=true;
+            visited[i][j] = true;
             res++;
             queue.add(new int[]{i + 1, j, getDigitSum(i + 1), getDigitSum(j)});
             queue.add(new int[]{i, j + 1, getDigitSum(i), getDigitSum(j + 1)});
