@@ -2,28 +2,28 @@ package 剑指offer.q36_二叉搜索树与双向链表;
 
 public class Solution {
 
-    public Node treeToDoublyList(Node root) {
+    Node pre, head;
 
-//        if ()
-        return null;
+    // 中序遍历
+    public Node treeToDoublyList(Node root) {
+        if (root == null) return null;
+        dfs(root);
+        head.left = pre;
+        pre.right = head;
+        return head;
     }
 
-    private Node treeToDoubleListCore(Node root) {
-        if (root.left == null && root.right == null) return root;
-
-        if (root.left != null) {
-            Node left = treeToDoublyList(root);
-            root.left = root;
-            left.right = root;
+    private void dfs(Node cur) {
+        if (cur == null) return;
+        dfs(cur.left);
+        if (pre != null) {
+            pre.right = cur;
+        } else {
+            head = cur;
         }
-
-        if (root.right != null) {
-            Node right = treeToDoublyList(root);
-            root.right = right;
-            right.left = root;
-        }
-
-        return null;
+        cur.left = pre;
+        pre = cur;
+        dfs(cur.right);
     }
 
     class Node {
