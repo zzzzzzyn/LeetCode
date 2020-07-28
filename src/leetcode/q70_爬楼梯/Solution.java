@@ -1,4 +1,4 @@
-package q70_爬楼梯;
+package leetcode.q70_爬楼梯;
 
 /**
  * Created by xyn on 2020/7/28
