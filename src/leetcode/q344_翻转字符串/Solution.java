@@ -1,0 +1,17 @@
+package leetcode.q344_翻转字符串;
+
+/**
+ * Created by xyn on 2020/8/2
+ */
+public class Solution {
+
+    public void reverseString(char[] s) {
+        int len = s.length;
+        for (int i = 0; i < len / 2; i++) {
+            char tmp = s[i];
+            s[i] = s[len - 1 - i];
+            s[len - 1 - i] = tmp;
+        }
+    }
+
+}
