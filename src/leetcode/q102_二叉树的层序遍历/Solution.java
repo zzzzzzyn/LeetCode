@@ -1,33 +1,28 @@
-package leetcode.q104_二叉树的最大深度;
+package leetcode.q102_二叉树的层序遍历;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Solution {
 
-    public int maxDepth(TreeNode root) {
-        if (root == null) return 0;
-
-        return max(maxDepth(root.left), maxDepth(root.right)) + 1;
-    }
-
-    private int max(int a, int b) {
-        return Math.max(a, b);
-    }
-
-    public int dfs(TreeNode root) {
-        int res = 0;
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null) return res;
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
+                list.add(node.val);
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
             }
-            res++;
+            res.add(list);
         }
         return res;
     }
