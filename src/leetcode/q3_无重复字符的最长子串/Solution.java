@@ -69,7 +69,7 @@ public class Solution {
         HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
-                // 替换窗口最左侧的值，相当于最左侧出栈
+                // 替换窗口最左侧的值，相当于最左侧出队
                 left = Math.max(left, map.get(s.charAt(i)) + 1);
             }
             map.put(s.charAt(i), i);
