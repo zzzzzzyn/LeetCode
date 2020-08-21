@@ -1,4 +1,4 @@
-package leetcode.q278_第一个错误版本;
+package leetcode.q287_第一个错误版本;
 
 public class Solution {
 
