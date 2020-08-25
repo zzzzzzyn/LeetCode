@@ -41,12 +41,12 @@ public class Solution {
             if (k % 2 == 0) {
                 // 倒序
                 for (int m = list.size() - 1; m >= 0; m--) {
-                    res[index++]=list.get(m);
+                    res[index++] = list.get(m);
                 }
-            }else {
+            } else {
                 // 正序
                 for (int m = 0; m < list.size(); m++) {
-                    res[index++]=list.get(m);
+                    res[index++] = list.get(m);
                 }
             }
             list.clear();
@@ -54,13 +54,4 @@ public class Solution {
         return res;
     }
 
-    public static void main(String[] args) {
-        for (int i : new Solution().findDiagonalOrder2(new int[][]{
-                new int[]{1, 2, 3},
-                new int[]{4, 5, 6},
-                new int[]{7, 8, 9}
-        })) {
-            System.out.print(i + ",");
-        }
-    }
 }
