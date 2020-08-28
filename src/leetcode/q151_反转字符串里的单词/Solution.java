@@ -1,11 +1,12 @@
-package leetcode.q151_翻转字符串里的单词;
+package leetcode.q151_反转字符串里的单词;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 
     public String reverseWords(String s) {
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
         s = s.trim();
