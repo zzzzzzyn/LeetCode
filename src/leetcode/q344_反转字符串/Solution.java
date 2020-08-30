@@ -1,4 +1,4 @@
-package leetcode.q344_翻转字符串;
+package leetcode.q344_反转字符串;
 
 /**
  * Created by xyn on 2020/8/2
