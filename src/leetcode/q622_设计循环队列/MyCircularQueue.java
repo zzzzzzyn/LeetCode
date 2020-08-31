@@ -42,7 +42,7 @@ public class MyCircularQueue {
         // 空队列
         if (size == 0) return false;
         // 边界
-        if (head == elementData.length - 1 && size != 0) {
+        if (head == elementData.length - 1) {
             head = 0;
         } else {
             head++;
