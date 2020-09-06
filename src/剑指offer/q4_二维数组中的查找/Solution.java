@@ -39,6 +39,6 @@ public class Solution {
 }
 
 //java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
-//        at line 5, leetcode.q20_有效的括号.Solution.findNumberIn2DArray
+//        at line 5, leetcode.q20_有效的括号.leetcode.q394_字符串解码.Solution.findNumberIn2DArray
 //        at line 57, __DriverSolution__.__helper__
 //        at line 84, __Driver__.main

@@ -1,3 +1,5 @@
+package leetcode.q394_字符串解码;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -40,7 +42,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = new test().decodeString("3[a]2[bc]");
+        String s = new Solution().decodeString("3[a]2[bc]");
         System.out.println(s);
     }
 }
