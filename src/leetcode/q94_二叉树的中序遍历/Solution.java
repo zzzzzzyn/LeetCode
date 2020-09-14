@@ -23,6 +23,19 @@ public class Solution {
         return list;
     }
 
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
+        help(root, res);
+        return res;
+    }
+
+    private void help(TreeNode root, List<Integer> list) {
+        if (root == null) return;
+        help(root.left, list);
+        list.add(root.val);
+        help(root.right, list);
+    }
+
     //Definition for a binary tree node.
     public class TreeNode {
         int val;
