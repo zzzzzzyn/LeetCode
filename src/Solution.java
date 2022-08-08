@@ -1,6 +1,148 @@
+import java.util.HashSet;
 import java.util.Stack;
 
 public class Solution {
+
+    public static int[] findDiagonalOrder(int[][] mat) {
+        int mLen = mat.length;
+        int nLen = mat[0].length;
+
+        // 1为上方向, 2为下方向
+        boolean top = true;
+
+        int[] res = new int[mLen * nLen];
+
+        int index = 0;
+        int m = 0;
+        int n = 0;
+        while (index < res.length) {
+            res[index++] = mat[m][n];
+
+            if (top) {
+                if (m - 1 < 0) {
+                    top = false;
+                } else {
+                    m--;
+                }
+
+                if (n + 1 >= nLen) {
+                    m++;
+                } else {
+                    n++;
+                }
+            } else {
+                if (n - 1 < 0) {
+                    top = true;
+                } else {
+                    n--;
+                }
+
+                if (m + 1 >= mLen) {
+                    n++;
+                } else {
+                    m++;
+                }
+            }
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[] diagonalOrder = findDiagonalOrder(arr);
+        for (int i = 0; i < diagonalOrder.length; i++) {
+            System.out.println(diagonalOrder[i]);
+        }
+    }
+
+
+    public static class ListNode {
+        int val;
+        Solution.ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    // 环形链表
+    public boolean hasCycle(Solution.ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        Solution.ListNode slow = head;
+        Solution.ListNode fast = head.next;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public Solution.ListNode detectCycle(Solution.ListNode head) {
+        HashSet<Solution.ListNode> set = new HashSet<>();
+
+        while (head != null) {
+            if (set.add(head)) {
+                head = head.next;
+            } else {
+                return head;
+            }
+        }
+
+        return null;
+    }
+
+
+    public Solution.ListNode getIntersectionNode(Solution.ListNode headA, Solution.ListNode headB) {
+        HashSet<Solution.ListNode> set = new HashSet<>();
+        while (headA != null) {
+            set.add(headA);
+            headA = headA.next;
+        }
+
+        while (headB != null) {
+            if (set.contains(headB)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+
+        return null;
+    }
+
+
+    public Solution.ListNode removeNthFromEnd(Solution.ListNode head, int n) {
+        Solution.ListNode slow = head;
+        Solution.ListNode fast = head;
+
+        while (n > 0) {
+            fast = fast.next;
+            n--;
+        }
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        if (fast == null) {
+            return head.next;
+        } else {
+            slow.next = slow.next.next;
+        }
+
+        return head;
+    }
 
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
