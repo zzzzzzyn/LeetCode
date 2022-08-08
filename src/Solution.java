@@ -1,7 +1,51 @@
 import java.util.HashSet;
+import java.util.List;
 import java.util.Stack;
 
 public class Solution {
+
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+    }
+
+    public ListNode reverseList2(ListNode head) {
+        Stack<ListNode> stack = new Stack<>();
+
+        while (head != null) {
+            stack.push(head);
+            head = head.next;
+        }
+
+        if (stack.isEmpty()) return null;
+
+        ListNode newHead = stack.pop();
+        head = newHead;
+        while (!stack.isEmpty()) {
+            newHead.next = stack.pop();
+            newHead = newHead.next;
+        }
+
+        newHead.next = null;
+        return head;
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        for (String str : wordDict) {
+            s = s.replace(str, "");
+        }
+
+        return s.isEmpty();
+    }
 
     public boolean searchMatrix(int[][] matrix, int target) {
         // 从左上角当做二叉树来搜索，上边的值小，右边的值大
@@ -80,6 +124,8 @@ public class Solution {
         ListNode(int x) {
             val = x;
         }
+
+        ListNode(){}
     }
 
     // 环形链表
